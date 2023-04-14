@@ -2,14 +2,14 @@ import { Close } from '@mui/icons-material';
 import { Alert, IconButton, Snackbar } from '@mui/material';
 import React, { createContext, useState, useContext } from 'react';
 
-interface Snackbar {
+interface SnackbarConfig {
   message: string;
   type: 'success' | 'error' | 'info';
   show: boolean;
 };
 
 interface SnackbarContextProps {
-  snackbar: Snackbar;
+  snackbar: SnackbarConfig;
   showSnackbar: (message: string, type: 'success' | 'error' | 'info') => void;
   hideSnackbar: () => void;
 };
@@ -25,7 +25,7 @@ const useSnackbar = (): SnackbarContextProps => {
 };
 
 const SnackbarProvider: React.FC<any> = ({ children }) => {
-  const [snackbar, setSnackbar] = useState<Snackbar>({
+  const [snackbar, setSnackbar] = useState<SnackbarConfig>({
     message: '',
     type: 'success',
     show: false,
